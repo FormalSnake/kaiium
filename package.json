@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "Terminal",
   "main": "main.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/superlopez-real/kaiium.git"
+  },
   "scripts": {
     "start": "electron .",
     "rebuild": "electron-rebuild -f -o node-pty -m",
@@ -10,7 +14,7 @@
     "pack": "electron-builder --dir",
     "build": "electron-builder -mwl",
     "dist": "electron-builder",
-    "distintel": "electron-builder --x64"
+    "distintel": "electron-builder --x64 --arm64"
   },
   "author": "Kyan De Sutter",
   "license": "ISC",
