@@ -1,0 +1,38 @@
+{
+  "name": "kaiium",
+  "version": "1.0.0",
+  "description": "Terminal",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "rebuild": "electron-rebuild -f -o node-pty -m",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "pack": "electron-builder --dir",
+    "build": "electron-builder -mwl",
+    "dist": "electron-builder",
+    "distintel": "electron-builder --x64"
+  },
+  "author": "Kyan De Sutter",
+  "license": "ISC",
+  "appId": "com.canarycoders.kaiium",
+  "mac": {
+    "category": "terminal.development.kaiium"
+  },
+  "devDependencies": {
+    "electron": "^19.0.4",
+    "electron-builder": "^23.0.3",
+    "electron-rebuild": "^3.2.7"
+  },
+  "dependencies": {
+    "electron-osx-sign": "^0.6.0",
+    "electron-tools": "^2.4.2",
+    "electron-updater": "^5.0.1",
+    "node-mac-permissions": "^2.2.1",
+    "node-pty": "^0.10.1",
+    "username": "^6.0.0",
+    "xterm": "^4.18.0",
+    "xterm-addon-fit": "^0.5.0",
+    "xterm-addon-webgl": "^0.11.4",
+    "xterm-js-shell": "^1.1.3"
+  }
+}
