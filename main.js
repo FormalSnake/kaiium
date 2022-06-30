@@ -23,8 +23,6 @@ var shell =
     ? "powershell.exe"
     : shellSettings; /* "/opt/homebrew/bin/fish"*/
 
-autoUpdater.checkForUpdatesAndNotify();
-
 let mainWindow;
 function createWindow() {
   mainWindow = new BrowserWindow({
@@ -42,6 +40,17 @@ function createWindow() {
   mainWindow.loadURL(`file://${__dirname}/index.html`);
   mainWindow.on("closed", function () {
     mainWindow = null;
+  });
+
+  autoUpdater.checkForUpdatesAndNotify();
+  autoUpdater.on("update-available", function () {
+    mainWindow.loadURL(`file://${__dirname}/updater.html`);
+  });
+  autoUpdater.on("update-downloaded", (updateInfo) => {
+    setTimeout(() => {
+      autoUpdater.quitAndInstall();
+      app.exit();
+    }, 10000);
   });
 
   //ipcing
