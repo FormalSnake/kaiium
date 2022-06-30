@@ -13,6 +13,7 @@ var term = new Terminal({
   fontFamily: FontFamily,
   cursorBlink: CursorBlink,
   termProgram: "Kaiium",
+  experimentalCharAtlas: "dynamic",
 });
 term.setOption("theme", {
   background: bgColor,
@@ -53,6 +54,7 @@ function log() {
 }
 
 var viewport = document.querySelector(".xterm-viewport");
+var canvas = document.querySelectorAll("canvas");
 log();
 
 term.onRender = function () {
@@ -76,3 +78,4 @@ console.log(bgColor);
 term.onResize(function (size) {
   ipc.send("terminal.resize", size);
 });
+term.write("Kaiium V1.0.4");

@@ -5,6 +5,8 @@ const {
   globalShortcut,
   Menu,
   MenuItem,
+  Tray,
+  nativeImage,
 } = require("electron");
 
 const pty = require("node-pty");
@@ -15,6 +17,8 @@ const username = process.env["LOGNAME"];
 const { autoUpdater } = require("electron-updater");
 
 const { bgColor, cols, rows, shellSettings } = getSettings();
+
+const TrayImage = nativeImage.createFromPath("./build/icon@4x.png");
 
 console.log(getSettings());
 
