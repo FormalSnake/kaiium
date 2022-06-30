@@ -61,6 +61,10 @@ function createWindow() {
   ipcMain.on("terminal.keystroke", (event, key) => {
     ptyProcess.write(key);
   });
+  ipcMain.on("terminal.resize", (event, size) => {
+    ptyProcess.resize(size.cols, size.rows);
+    console.log("resized");
+  });
 }
 
 app.on("ready", createWindow);

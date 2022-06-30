@@ -72,3 +72,7 @@ term.onData((e) => {
   ipc.send("terminal.keystroke", e);
 });
 console.log(bgColor);
+
+term.onResize(function (size) {
+  ipc.send("terminal.resize", size);
+});
