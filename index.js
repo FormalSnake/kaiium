@@ -1,5 +1,6 @@
 const { WebglAddon } = require("xterm-addon-webgl");
 const { getSettings } = require("./settings");
+const { FitAddon } = require("./xterm-addon-fit");
 
 const ipc = require("electron").ipcRenderer;
 
@@ -17,7 +18,8 @@ term.setOption("theme", {
   background: bgColor,
 });
 var webgl = new WebglAddon();
-var fitAddon = new FitAddon.FitAddon();
+//var fitAddon = new FitAddon.FitAddon();
+const fitAddon = new FitAddon();
 
 /*term.onData(function (data) {
   term.write(data);

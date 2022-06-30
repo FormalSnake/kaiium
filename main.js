@@ -1,4 +1,11 @@
-const { app, BrowserWindow, ipcMain, Notification } = require("electron");
+const {
+  app,
+  BrowserWindow,
+  ipcMain,
+  globalShortcut,
+  Menu,
+  MenuItem,
+} = require("electron");
 
 const pty = require("node-pty");
 const os = require("os");
