@@ -9,12 +9,13 @@
   },
   "scripts": {
     "start": "electron .",
-    "rebuild": "electron-rebuild -f -o node-pty -m",
+    "rebuild": "electron-rebuild",
     "test": "echo \"Error: no test specified\" && exit 1",
     "pack": "electron-builder --dir",
     "build": "electron-builder -mwl",
     "dist": "electron-builder",
-    "distintel": "electron-builder --x64 --arm64"
+    "distintel": "electron-builder --x64 --arm64",
+    "conf": "node-gyp configure --arch=x64"
   },
   "author": "Kyan De Sutter",
   "license": "ISC",
@@ -31,6 +32,7 @@
     "electron-osx-sign": "^0.6.0",
     "electron-tools": "^2.4.2",
     "electron-updater": "^5.0.1",
+    "electron-vibrancy-updated": "github:superlopez-real/electron-vibrancy-updated",
     "node-gyp": "^9.0.0",
     "node-mac-permissions": "^2.2.1",
     "node-pty": "^0.10.1",

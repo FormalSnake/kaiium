@@ -1091,10 +1091,17 @@
     "lodash.isequal" "^4.5.0"
     "semver" "^7.3.5"
 
+"electron-vibrancy-updated@github:superlopez-real/electron-vibrancy-updated":
+  "resolved" "git+ssh://git@github.com/superlopez-real/electron-vibrancy-updated.git#f2c3f3b31fb495f188c1478d32ee77331111c1eb"
+  "version" "0.2.4"
+  dependencies:
+    "bindings" "^1.5.0"
+    "nan" "^2.15.0"
+
 "electron@^19.0.4", "electron@latest":
-  "integrity" "sha512-roRYr1VNAWIhjD9n8qZdmhROtrzsFpuZEXrjWAw+GqPbZlrUInmvFCviRDC2Lt+VBsTNRpTfPpfzXSlLL4reEw=="
-  "resolved" "https://registry.npmjs.org/electron/-/electron-19.0.4.tgz"
-  "version" "19.0.4"
+  "integrity" "sha512-OWK3P/NbDFfBUv+wbYv1/OV4jehY5DQPT7n1maQJfN9hsnrWTMktXS/bmS05eSUAjNAzHmKPKfiKH2c1Yr7nGw=="
+  "resolved" "https://registry.npmjs.org/electron/-/electron-19.0.8.tgz"
+  "version" "19.0.8"
   dependencies:
     "@electron/get" "^1.14.1"
     "@types/node" "^16.11.26"
@@ -2065,7 +2072,7 @@
   "resolved" "https://registry.npmjs.org/ms/-/ms-2.0.0.tgz"
   "version" "2.0.0"
 
-"nan@^2.14.0":
+"nan@^2.14.0", "nan@^2.15.0":
   "integrity" "sha512-UdAqHyFngu7TfQKsCBgAA6pWDkT8MAO7d0jyOecVhN5354xbLqdn8mV9Tat9gepAupm0bt2DbeaSC8vS52MuFA=="
   "resolved" "https://registry.npmjs.org/nan/-/nan-2.16.0.tgz"
   "version" "2.16.0"

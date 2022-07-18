@@ -78,4 +78,4 @@ console.log(bgColor);
 term.onResize(function (size) {
   ipc.send("terminal.resize", size);
 });
-term.write("Kaiium V1.0.4");
+term.write("Kaiium V1.0.5");
