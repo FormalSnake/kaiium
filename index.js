@@ -14,6 +14,7 @@ var term = new Terminal({
   cursorBlink: CursorBlink,
   termProgram: "Kaiium",
   experimentalCharAtlas: "dynamic",
+  allowTransparency: "true",
 });
 term.setOption("theme", {
   background: bgColor,
@@ -78,4 +79,14 @@ console.log(bgColor);
 term.onResize(function (size) {
   ipc.send("terminal.resize", size);
 });
-term.write("Kaiium V1.0.5");
+term.write("Kaiium V1.0.8");
+
+    term.attachCustomKeyEventHandler((arg) => {
+        if (arg.ctrlKey && arg.code === "KeyV" && arg.type === "keydown") {
+            navigator.clipboard.readText()
+              .then(text => {
+                term.write(text);
+              })
+        };
+        return true;
+    });

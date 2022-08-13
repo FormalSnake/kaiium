@@ -1,13 +1,15 @@
 const fs = require("fs");
 
 const default_settings = {
-  bgColor: "#1a1b26",
+  bgColor: "rgba(26, 27, 38, 0.1)",
   cols: 158,
   rows: 45,
   shellSettings: "/bin/zsh",
   CursorBlink: true,
   FontFamily: "SauceCodePro Nerd Font",
   FontSize: 14,
+  blurType: "hud",
+  completeTransparent: false,
 };
 var fileName = `${process.env["HOME"]}/.config/kaiium_config.json`;
 

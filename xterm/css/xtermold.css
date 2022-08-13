@@ -42,7 +42,8 @@ body {
 }
 
 html,
-body{
+body,
+.terminal {
   height: 100vh;
   width: 100%;
   font-size: 16px;
@@ -51,8 +52,6 @@ body{
 }
 
 .terminal {
-  height: 100vh;
-  width: 100%;
   overflow: hidden;
   display: flex;
   justify-content: center;
@@ -79,10 +78,13 @@ body{
      * The z-index of the helpers must be higher than the canvases in order for
      * IMEs to appear on top.
      */
-  z-index: 10;
+  z-index: 5;
 }
 
 .xterm .xterm-helper-textarea {
+  padding: 0;
+  border: 0;
+  margin: 0;
   /* Move textarea out of the screen to the far left, so that the cursor is not visible */
   position: absolute;
   opacity: 0;
@@ -90,7 +92,7 @@ body{
   top: 0;
   width: 0;
   height: 0;
-  z-index: -10;
+  z-index: -5;
   /** Prevent wrapping so the IME appears against the textarea at the correct position */
   white-space: nowrap;
   overflow: hidden;
@@ -114,8 +116,9 @@ body{
 .xterm .xterm-viewport {
   /* On OS X this is required in order for the scroll bar to appear fully opaque */
   background-color: #000;
+  width: initial !important;
 
-  cursor: default;
+  cursor: text;
   position: absolute;
   right: 0;
   left: 0;
@@ -127,7 +130,7 @@ body{
   position: relative;
 }
 
-.xterm canvas {
+.xterm .xterm-screen canvas {
   position: absolute;
   left: 0;
   top: 0;
@@ -137,7 +140,7 @@ body{
   visibility: hidden;
 }
 
-.xterm .xterm-char-measure-element {
+.xterm-char-measure-element {
   display: inline-block;
   visibility: hidden;
   position: absolute;
@@ -145,15 +148,14 @@ body{
   left: -9999em;
   line-height: normal;
 }
-.xterm{
-  cursor: text;
-}
-.xterm .xterm.enable-mouse-events {
+
+.xterm.enable-mouse-events {
   /* When mouse events are enabled (eg. tmux), revert to the standard pointer cursor */
   cursor: default;
 }
 
-.xterm.xterm-cursor-pointer {
+.xterm.xterm-cursor-pointer,
+.xterm .xterm-cursor-pointer {
   cursor: pointer;
 }
 
@@ -169,7 +171,7 @@ body{
   top: 0;
   bottom: 0;
   right: 0;
-  z-index: 100;
+  z-index: 10;
   color: transparent;
 }
 
@@ -181,3 +183,32 @@ body{
   overflow: hidden;
 }
 
+.xterm-dim {
+  opacity: 0.5;
+}
+
+.xterm-underline {
+  text-decoration: underline;
+}
+
+.xterm-strikethrough {
+  text-decoration: line-through;
+}
+
+.xterm-screen .xterm-decoration-container .xterm-decoration {
+  z-index: 6;
+  position: absolute;
+}
+
+.xterm-decoration-overview-ruler {
+  z-index: 7;
+  position: absolute;
+  top: 0;
+  right: 0;
+  pointer-events: none;
+}
+
+.xterm-decoration-top {
+  z-index: 2;
+  position: relative;
+}
