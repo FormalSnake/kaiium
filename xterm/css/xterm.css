@@ -39,6 +39,7 @@ body {
   background-color: #1a1b26;
   overflow: hidden;
   margin: 0;
+  width: calc(100% + 20px) !important;
 }
 
 html,
@@ -52,7 +53,7 @@ body{
 
 .terminal {
   height: 100vh;
-  width: 100%;
+  width: 100vw;
   overflow: hidden;
   display: flex;
   justify-content: center;

@@ -1,5 +1,5 @@
 // Imports dependencies for executing electron
-const { app, ipcMain, BrowserWindow } = require("electron");
+const { app, ipcMain, BrowserWindow, Menu, MenuItem } = require("electron");
 
 // Imports node-pty, which is required for the actual terminal process
 const pty = require("node-pty");
@@ -32,11 +32,11 @@ let mainWindow;
 // This is the configuration for the electron window
 function createWindow() {
   // Creates the window object
-  mainWindow = new BrowserWindow({
+  let mainWindow = new BrowserWindow({
     // The height of the application
-    height: 1080,
+    height: 961,
     // The width of the application
-    width: 1920,
+    width: 1555,
     // This starts the application in the center of your screen
     center: true,
     // This disables the default macOS window bar
@@ -114,6 +114,20 @@ function createWindow() {
 // Create a window when the app is ready
 app.on("ready", createWindow);
 
+app.on("add-window", createWindow);
+
+const menu = new Menu()
+menu.append(new MenuItem({
+  label: 'kaiium',
+  submenu: [{
+    role: 'new window',
+    accelerator: process.platform === 'darwin' ? 'Cmd+N' : 'Ctrl+N',
+    click: () => {createWindow()}
+  }]
+}))
+
+Menu.setApplicationMenu(menu)
+
 // When there are no windows, it just quits the entire process
 app.on("window-all-closed", function () {
   if (process.platform !== "darwin") {
@@ -127,3 +141,5 @@ app.on("activate", function () {
     createWindow();
   }
 });
+
+
