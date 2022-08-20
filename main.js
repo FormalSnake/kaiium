@@ -1,6 +1,6 @@
 // Imports dependencies for executing electron
-const { app, ipcMain, BrowserWindow, Menu, MenuItem } = require("electron");
-
+const { app, ipcMain, BrowserWindow, Menu, MenuItem, globalShortcut } = require("electron");
+const contextMenu = require('electron-context-menu');
 // Imports node-pty, which is required for the actual terminal process
 const pty = require("node-pty");
 // Gets the os you are on, to switch between eg. bash and zsh depending on your operating system
@@ -10,7 +10,7 @@ const { getSettings } = require("./BackEnd/settings");
 // This is the auto updater that updates the application when a new version comes out.
 const { autoUpdater } = require("electron-updater");
 // This gets the required settings from the settings file using the getSettings(); function
-const { cols, rows, shellSettings, blurType, completeTransparent } =
+const { cols, rows, shellSettings, blurType, completeTransparent, showContextMenu } =
   getSettings();
 
 // Enable live reload for all the files inside your project directory
@@ -19,6 +19,21 @@ require("electron-reload")(__dirname, {
   electron: require(`${__dirname}/node_modules/electron`),
 });
 
+if(showContextMenu)
+{
+contextMenu({
+	showSaveImageAs: true,
+	showLookUpSelectrion: true,
+	showSearchWithGoogle: true,
+	showSelectAll: true,
+	showCopyImage: true,
+	showCopyImageAddress: true,
+	showSaveImage: true,
+	showSaveLinkAs: true,
+	showInspectElement: true,
+	showServices: true
+});
+}
 // This logs the settings (Good for debugging purposes)
 // console.log(getSettings());
 
@@ -29,6 +44,7 @@ var shell =
     : shellSettings; /* fish shell path: "/opt/homebrew/bin/fish"*/
 
 let mainWindow;
+let ptyProcess;
 // This is the configuration for the electron window
 function createWindow() {
   // Creates the window object
@@ -78,13 +94,14 @@ function createWindow() {
   }
   //ipcing
   // This starts the pty process, with basic terminal configurations
-  var ptyProcess = pty.spawn(shell, [], {
+  let ptyProcess = pty.spawn(shell, [], {
     name: "xterm-color",
     cols: cols,
     rows: rows,
     cwd: process.env.HOME,
     env: process.env,
   });
+
   // This sends your input to the ptyProcess
   ptyProcess.on("data", function (data) {
     mainWindow.webContents.send("terminal.incomingData", data);
@@ -115,18 +132,30 @@ function createWindow() {
 app.on("ready", createWindow);
 
 app.on("add-window", createWindow);
+/*
+const menu = new Menu();
+menu.append(
+  new MenuItem({
+    label: "Electron",
+    submenu: [
+      {
+        role: "NewWindow",
+        accelerator: process.platform === "darwin" ? "Shift+Cmd+N" : "Shift+Ctrl+N",
+        click: () => {
+          createWindow();
+        },
+      },
+    ],
+  })
+);
 
-const menu = new Menu()
-menu.append(new MenuItem({
-  label: 'kaiium',
-  submenu: [{
-    role: 'new window',
-    accelerator: process.platform === 'darwin' ? 'Cmd+N' : 'Ctrl+N',
-    click: () => {createWindow()}
-  }]
-}))
-
-Menu.setApplicationMenu(menu)
+Menu.setApplicationMenu(menu);*/
+app.whenReady().then(() => {
+  // Register a 'CommandOrControl+Y' shortcut listener.
+  globalShortcut.register('CommandOrControl+Shift+N', () => {
+    createWindow();
+  })
+})
 
 // When there are no windows, it just quits the entire process
 app.on("window-all-closed", function () {
@@ -141,5 +170,3 @@ app.on("activate", function () {
     createWindow();
   }
 });
-
-

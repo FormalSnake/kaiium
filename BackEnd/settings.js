@@ -21,6 +21,8 @@ const default_settings = {
   blurType: "hud",
   // Toggles the blur
   completeTransparent: false,
+  // Gives the user a right click menu
+  showContextMenu: true,
 };
 // The file name and path for the configuration file.
 // It gets stored in the .config folder in your home directory

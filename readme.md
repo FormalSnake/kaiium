@@ -29,7 +29,8 @@ This is how it would look like inside of the configuration file:
       "FontFamily": "SauceCodePro Nerd Font",
       "FontSize": 18,
       "blurType": "hud",
-      "completeTransparent": false
+      "completeTransparent": false,
+      "showContextMenu": false
     }
 
 If your terminal text looks all weird, install the SauceCodePro Nerd Font onto your computer, which can be found here: https://github.com/ryanoasis/nerd-fonts/blob/master/patched-fonts/SourceCodePro/Regular/complete/Sauce%20Code%20Pro%20Nerd%20Font%20Complete.ttf
