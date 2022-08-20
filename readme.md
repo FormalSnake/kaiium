@@ -1,6 +1,7 @@
 # Kaiium terminal
 
-![alt text](https://github.com/superlopez-real/kaiium/blob/master/Screenshot.png?raw=true)
+![alt text](https://github.com/FormalSnake/kaiium/blob/master/Screenshot.png?raw=true)
+![alt text](https://github.com/FormalSnake/kaiium/blob/master/Screenshot1.png?raw=true)
 
 ## What is Kaiium terminal?
 
